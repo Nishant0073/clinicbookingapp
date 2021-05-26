@@ -1,10 +1,8 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Loader, Message, Segment } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react'
 import axios from "axios"
-import { apiLogin, apiSignUp, apiLogout } from "../../../urls"
-import { routeHome } from "../../../urls"
-import { Redirect, Router } from 'react-router'
-import Home from '../../home'
+import { apiLogout } from "../../../urls"
+
 import { getCookie } from '../../../utils'
 class Logout extends React.Component {
 

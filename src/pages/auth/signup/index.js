@@ -1,10 +1,8 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import "./css/index.css"
-import { apiLogin, apiSignUp, routeHome } from "../../../urls"
+import { apiSignUp, routeHome } from "../../../urls"
 import axios from 'axios'
-import Home from '../../home'
-import { Redirect } from 'react-router'
 
 const options = [
     { key: 'm', text: 'Male', value: 'male' },

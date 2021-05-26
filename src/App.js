@@ -3,16 +3,12 @@ import React from 'react';
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom"
 import Appointment from './pages/appointment';
 import Home from './pages/home';
-import NavBar from "./pages/navbar"
 import LoginForm from './pages/auth/login';
 import SignUpForm from './pages/auth/signup';
 import axios from 'axios';
 import Logout from './pages/auth/logout';
 
 import { apiVerify } from './urls'
-import Routing from './pages/routing';
-
-import Cookies from 'js-cookie'
 import { getCookie } from './utils'
 
 class App extends React.Component {

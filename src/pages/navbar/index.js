@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Input, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import "./index.css"
 
 
@@ -13,31 +13,33 @@ export default class NavBar extends Component {
 
   render() {
     const { activeItem } = this.state
- 
+
     return (
 
-
       <Menu secondary>
+
         <Menu.Item
-          as={NavLink} exact to ="/"
+          as={NavLink} exact to="/"
           name='home'
           active={activeItem === 'home'}
           onClick={this.handleItemClick}
         />
+
         <Menu.Item
-          as={NavLink} exact to ="/appointment"
+          as={NavLink} exact to="/appointment"
           name='Book Appointment'
           active={activeItem === 'appointment'}
           onClick={this.handleItemClick}
         />
+
         <Menu.Menu position='right'>
           <Menu.Item
-            as={NavLink} exact to ="/logout"
+            as={NavLink} exact to="/logout"
             name='logout'
             active={activeItem === 'logout'}
-            // onClick={this.handleItemClick}
           />
         </Menu.Menu>
+
       </Menu>
     )
   }

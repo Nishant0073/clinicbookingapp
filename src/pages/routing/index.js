@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import { apiVerify } from '../../urls';
 import Appointment from '../appointment';
 import Logout from '../auth/logout';
@@ -11,7 +11,7 @@ class Routing extends React.Component {
         super(props)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get(`${apiVerify}`).then(
             result => {
                 console.log("Helo ", result)
@@ -35,9 +35,10 @@ class Routing extends React.Component {
                     <Route path="/appointment" exact render={() => <Appointment />} />
                     <Route path="/logout" exact render={() => <Logout />} />
                 </Router>
+
                 <div>
                     Home Page
-                    </div>
+                </div>
 
             </div>
 
