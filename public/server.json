@@ -1,0 +1,13 @@
+{
+  "name": "customer name",
+  "phone": "0123456789",
+  "pic": "/profile.png",
+  "userid": "tempid@123",
+  "age": "45",
+  "city": "tempCiry",
+  "gender": "Male/Female",
+  "state": "tempState",
+  "symptoms": "fever,cough,head ache,stomach ache,cold",
+  "appointment": "Tuesday 25, 2021",
+  "first-time": "yes"
+}

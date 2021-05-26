@@ -1,0 +1,16 @@
+
+
+.part
+{
+        margin:0px 10px 0px 0px;
+}
+.ui.menu {
+        border-bottom: 0 none !important;
+        box-shadow: none;
+}
+
+
+.ui.header
+{
+        padding-top:20px;
+}

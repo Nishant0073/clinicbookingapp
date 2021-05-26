@@ -1,0 +1,147 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@700&display=swap'); */
+
+/* whole component will be wrapped in this class to avoid conflict with other components */
+.profile {
+  /* Variables used in the css */
+  --black-2: #343434;
+  --black-1: #000;
+  --light-orange: rgb(255,177,35);
+  --dark-orange: #f08e00;
+  box-sizing: border-box;
+  font-family: Times New Roman;
+  
+}
+
+.profile h1 {
+  text-align: center;
+  margin-top: 0;
+  padding: 15px 10px;
+  background: radial-gradient(
+  at top left,
+  var(--black-2),
+  var(--black-1)
+  );
+  color: white;
+}
+
+/* profile picture */
+.profile .pic {
+  margin: auto;
+  /* to align items vertical and centered */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px !important;
+}
+
+.profile .pic img {
+  width: 150px;
+  aspect-ratio: 3/4;
+  border-radius: 8px;
+}
+
+.profile .pic h3 {
+  text-align: center;
+}
+
+.profile .box {
+  border: 1px solid grey;
+  box-shadow: 0px 2px 15px grey;
+  margin: 10px;
+  margin-bottom: 30px;
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+
+.profile .line {
+  display: grid;
+  grid-template-columns: 125px auto;
+  grid-gap: 0;
+  position: relative;
+  --right: 100%;
+  border-left: 0px solid  var(--dark-orange);
+  transition: border .1s linear;
+  --title-color: #b85e00;
+  user-select: none;
+}
+
+.profile .line::before {
+  content: '';
+  background-color: var(--light-orange);
+  position: absolute;
+  z-index: -5;
+  left: 0;
+  height: 100%;
+  bottom: 0;
+  right: var(--right);
+  transition: right .25s linear;
+}
+
+.profile .line:hover {
+  --right: 0%;
+  border-left-width: 15px;
+  --title-color: black;
+}
+
+.profile .info p {
+  margin: 5px 0;
+  position: relative;
+  padding: 0 5px;
+}
+
+.profile .info p:nth-child(odd) {
+  font-weight: bold;
+  color: var(--title-color);
+}
+
+.profile .med-info ul {
+  margin: 0;
+}
+
+.profile .med-info .symptoms {
+  margin: 5px 0;
+  padding: 0 5px;
+  /* margin-left: 25px; */
+  list-style-type: square;
+}
+
+.profile .med-info .line {
+  font-weight: bold;
+  /* color: #b85e00; */
+  color: var(--title-color);
+  /* margin: 5px 0; */
+  padding: 5px;
+  grid-template-columns: auto;
+}
+
+.profile .title {
+  text-align: center;
+  position: relative;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  font-size: 30px;
+  width: 100%;
+  /* border: 1px solid red; */
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -5;
+  /* color: rgba(170,170,170,0.624); */
+  color: rgba(186,186,186,0.6);
+}
+
+.profile .personal::before {
+  content: 'Personal Details';
+}
+
+.profile .medical::before {
+  content: 'Medical Details';
+}
