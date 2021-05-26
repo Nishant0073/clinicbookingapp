@@ -6,6 +6,7 @@ import Home from './pages/home';
 import NavBar from "./pages/navbar"
 import LoginForm from './pages/auth/login';
 import SignUpForm from './pages/auth/signup';
+import axios from 'axios';
 
 
 
@@ -15,17 +16,23 @@ class App extends React.Component {
         super(props)
         this.state = {
             login_status: null,
+            session_id:null,
         }
     }
 
     render() {
+        axios.get({
+
+        }).then((response) => {
+
+        }).catch((err) => {
+
+        })
         if (this.state.login_status == null) {
             return (
                 <Router>
-                    <Route exact path="/">
-                        <Redirect to="/login" />
-                    </Route>
-                    <Route path="/login" exact render={() => <LoginForm />} />
+
+                    <Route path="/" exact render={() => <LoginForm />} />
                     <Route path="/signup" exact render={() => <SignUpForm />} />                    
                 </Router>
             );
