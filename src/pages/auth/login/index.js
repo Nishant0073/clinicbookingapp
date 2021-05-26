@@ -6,6 +6,7 @@ import { routeHome } from "../../../urls"
 import { Redirect, Router } from 'react-router'
 import Home from '../../home'
 import Routing from '../../routing'
+import App from '../../../App'
 class LoginForm extends React.Component {
 
   constructor(props) {
@@ -35,13 +36,16 @@ class LoginForm extends React.Component {
         this.setState({
           userSessionId: response.data.session_id,
         })
+        console.log(response.data.session_id)
         alert("User logged in successfully")
         // window.location = `${routeHome()}`+"home"
+        document.cookie  = `session_id=${response.data.session_id}`
+        console.log("s_id ", response.data.session_id)       
+       
         this.setState({
           loginStatus: true
         })
-        document.cookie  = `session_id=${response.data.session_id}`
-        console.log("s_id ", response.data.session_id)
+
       }
     }).catch((err) => {
       alert("User not found")
@@ -63,8 +67,10 @@ class LoginForm extends React.Component {
     });
   }
   render() {
-    if(this.state.loginStatus){
-      <Routing />
+    if(this.state.loginStatus == true){
+      return(
+        <App />
+      );
     }
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>

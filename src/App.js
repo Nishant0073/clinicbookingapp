@@ -13,20 +13,38 @@ import { apiVerify } from './urls'
 import Routing from './pages/routing';
 
 import Cookies from 'js-cookie'
+import { getCookie } from './utils'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            login_status: null,
-            session_id: null,
+            login_status: false,
         }
     }
+    componentDidMount() {
+        axios.post(
+            `${apiVerify()}`,
+            {
+                session_id: getCookie("session_id")
+            }
 
-
+        ).then(
+            result => {
+                this.setState({
+                    login_status:true
+                })
+                console.log(result.data.user_details)
+            }
+        ).catch(
+            err => {
+                console.log(err)
+            }
+        )
+    }
     render() {
+        if (this.state.login_status == false) {
 
-        if (Cookies.session_id == null) {
             return (
                 <Router>
                     <Route path="/" exact render={() => <LoginForm />} />
