@@ -15,8 +15,8 @@ class Appointment extends React.Component {
                                 <div class="ui divider"/>
                             </div>
                             <div>
-                                <h4 class="ui header">Third header</h4>
-                                <input type="text" name="first-name" placeholder="First Name"/>
+                                <h4 class="ui header">Mention Symptoms:</h4>
+                                <input type="text" name="symptons" placeholder="Faver.."/>
                             </div>
                             <div class="ui hidden divider"/>
                             <div>
