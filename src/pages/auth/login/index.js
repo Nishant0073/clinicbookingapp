@@ -5,6 +5,7 @@ import { apiLogin, apiSignUp } from "../../../urls"
 import { routeHome } from "../../../urls"
 import { Redirect, Router } from 'react-router'
 import Home from '../../home'
+import Routing from '../../routing'
 class LoginForm extends React.Component {
 
   constructor(props) {
@@ -35,10 +36,12 @@ class LoginForm extends React.Component {
           userSessionId: response.data.session_id,
         })
         alert("User logged in successfully")
-        window.location = `${routeHome()}`+"home"
+        // window.location = `${routeHome()}`+"home"
         this.setState({
           loginStatus: true
         })
+        document.cookie  = `session_id=${response.data.session_id}`
+        console.log("s_id ", response.data.session_id)
       }
     }).catch((err) => {
       alert("User not found")
@@ -60,7 +63,9 @@ class LoginForm extends React.Component {
     });
   }
   render() {
-
+    if(this.state.loginStatus){
+      <Routing />
+    }
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>

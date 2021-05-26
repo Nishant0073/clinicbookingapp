@@ -7,33 +7,30 @@ import NavBar from "./pages/navbar"
 import LoginForm from './pages/auth/login';
 import SignUpForm from './pages/auth/signup';
 import axios from 'axios';
+import Logout from './pages/auth/logout';
 
+import { apiVerify } from './urls'
+import Routing from './pages/routing';
 
-
+import Cookies from 'js-cookie'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             login_status: null,
-            session_id:null,
+            session_id: null,
         }
     }
 
+
     render() {
-        axios.get({
 
-        }).then((response) => {
-
-        }).catch((err) => {
-
-        })
-        if (this.state.login_status == null) {
+        if (Cookies.session_id == null) {
             return (
                 <Router>
-
                     <Route path="/" exact render={() => <LoginForm />} />
-                    <Route path="/signup" exact render={() => <SignUpForm />} />                    
+                    <Route path="/signup" exact render={() => <SignUpForm />} />
                 </Router>
             );
         }
@@ -41,14 +38,11 @@ class App extends React.Component {
             return (
                 <div>
                     <Router>
-                        <NavBar />
-                        <Route exact path="/">
-                            <Redirect to="/home" />
-                        </Route>
-                        <Route path="/home" exact render={() => <Home />} />
+
+                        <Route path="/" exact render={() => <Home />} />
                         <Route path="/appointment" exact render={() => <Appointment />} />
-                        <Route path="/login" exact render={() => <LoginForm />} />
-                        <Route path="/signup" exact render={() => <SignUpForm />} />
+                        <Route path="/logout" exact render={() => <Logout />} />
+
                     </Router>
                 </div>
             );
