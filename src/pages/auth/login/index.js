@@ -14,28 +14,53 @@ class LoginForm extends React.Component {
       password: "",
       loginStatus: null,
       userInfo: null,
+      userSessionId:null,
     }
+    this.handleClick = this.handleClick.bind(this)
+    this.handleUsernameChange = this.handleUsernameChange.bind(this)
+    this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
   login = () => {
     axios.post(`${apiLogin()}`, {
       username: this.state.username,
       password: this.state.password,
     }).then((response) => {
+      console.log(response)
       if (response.data.message) {
         console.log(response.data.message)
-        this.setState({
-          loginStatus: null,
-        })
+        alert("User doesn't exist")
       }
       else {
-        <Home userInfo={response.data.userInfo}/>
+        this.setState({
+          userSessionId: response.data.session_id,
+        })
+        alert("User logged in successfully")
+        window.location = `${routeHome()}`+"home"
+        this.setState({
+          loginStatus: true
+        })
       }
     }).catch((err) => {
-      alert("Backend server not yet running.")
+      alert("User not found")
     })
   }
 
+  handleClick() {
+    console.log(" username : "+this.state.username+"\n password : "+this.state.password)
+    this.login()
+  }
+  handleUsernameChange(event) {
+    this.setState({
+      username: event.target.value
+    })
+  }
+  handlePasswordChange(event) {
+    this.setState({
+      password: event.target.value
+    });
+  }
   render() {
+
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
@@ -44,16 +69,17 @@ class LoginForm extends React.Component {
           </Header>
           <Form size='large'>
             <Segment stacked>
-              <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' />
+              <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' onChange={this.handleUsernameChange} />
               <Form.Input
                 fluid
                 icon='lock'
                 iconPosition='left'
                 placeholder='Password'
                 type='password'
+                onChange={this.handlePasswordChange}
               />
 
-              <Button color='teal' fluid size='large'>
+              <Button color='teal' fluid size='large' onClick={this.handleClick}>
                 Login
               </Button>
             </Segment>
