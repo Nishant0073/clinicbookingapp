@@ -1,13 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom"
+import Appointment from '../appointment';
+import Logout from '../auth/logout';
+import NavBar from '../navbar';
 
 class Home extends React.Component {
     render() {
-        return(
+
+        return (
             <div>
-                Home Page<br />
-                <i>This would be the profile page</i>
+                <NavBar />
+                
+                <div>
+                    Home Page
+                </div>
+
             </div>
-        
+
+
         );
     }
 }

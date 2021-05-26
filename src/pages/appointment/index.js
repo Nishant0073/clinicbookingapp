@@ -1,11 +1,15 @@
 import React from 'react';
+import NavBar from '../navbar';
 
 
 class Appointment extends React.Component {
     render() {
         return(
             <div>
-                Appointment Page
+                <NavBar />
+                <div>
+                    Appointment Page
+                </div>
             </div>
         
         );

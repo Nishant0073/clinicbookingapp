@@ -19,7 +19,7 @@ export default class NavBar extends Component {
 
       <Menu secondary>
         <Menu.Item
-          as={NavLink} exact to ="/home"
+          as={NavLink} exact to ="/"
           name='home'
           active={activeItem === 'home'}
           onClick={this.handleItemClick}
@@ -32,7 +32,7 @@ export default class NavBar extends Component {
         />
         <Menu.Menu position='right'>
           <Menu.Item
-            as={NavLink} exact to ="/"
+            as={NavLink} exact to ="/logout"
             name='logout'
             active={activeItem === 'logout'}
             // onClick={this.handleItemClick}
