@@ -127,14 +127,14 @@ class SignUpForm extends React.Component {
             <div className="signup-container">
                 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 450 }}>
-                        <Header as='h2' color='green' textAlign='center'>
-                            !! Welcome to Clinify !!
+                        <Header as='h2' color='black' textAlign='center'>
+                            Welcome to Clinify
                         </Header>
                         <Header as='h3' color='blue' textAlign='center'>
                             <i>The one-step solution to healing</i>
                         </Header>
-                        <Form size='large'>
-                            <Segment stacked>
+                        <Form inverted size='large'>
+                            <Segment inverted stacked>
                                 <Form.Group widths='equal'>
                                     <Form.Input fluid placeholder='First Name' onChange={this.handleFirstNameChange} />
                                     <Form.Input fluid placeholder='Last Name' onChange={this.handleLastNameChange} />
@@ -159,9 +159,9 @@ class SignUpForm extends React.Component {
                                     />
                                 </Form.Group>
                                 <Form.Input fluid icon='chat' iconPosition='left' placeholder='Email' onChange={this.handleEmailChange} />
-                                <Button type="reset" color='teal' fluid size='large' onClick={this.handleClick}>
+                                <Button type="reset" color='blue' fluid size='large' onClick={this.handleClick}>
                                     Register
-                        </Button>
+                                </Button>
                         <br/>
                         <i className="alert-message">All fields are compulsary</i>
                             </Segment>

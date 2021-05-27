@@ -82,12 +82,12 @@ class LoginForm extends React.Component {
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
 
-          <Header as='h2' color='teal' textAlign='center'>
+          <Header as='h2' color='black' textAlign='center'>
             Log-in to your account
           </Header>
 
-          <Form size='large'>
-            <Segment stacked>
+          <Form inverted size='large' color="red">
+            <Segment inverted stacked>
 
               <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' onChange={this.handleUsernameChange} />
               
@@ -100,14 +100,14 @@ class LoginForm extends React.Component {
                 onChange={this.handlePasswordChange}
               />
 
-              <Button color='teal' fluid size='large' onClick={this.handleClick}>
+              <Button color='blue' fluid size='large' onClick={this.handleClick}>
                 Login
               </Button>
               
             </Segment>
           </Form>
 
-          <Message>
+          <Message inverted>
             New to us? <a href={`${routeHome()}` + "signup"}>Sign Up</a>
           </Message>
 

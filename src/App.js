@@ -16,6 +16,7 @@ class App extends React.Component {
         super(props)
         this.state = {
             login_status: false,
+            user_details:null,
         }
     }
     componentDidMount() {
@@ -28,7 +29,8 @@ class App extends React.Component {
         ).then(
             result => {
                 this.setState({
-                    login_status:true
+                    login_status:true,
+                    user_details: result.data.user_details
                 })
                 console.log(result.data.user_details)
             }
@@ -37,7 +39,7 @@ class App extends React.Component {
                 console.log(err)
             }
         )
-    }
+    }user_details
     render() {
         if (this.state.login_status == false) {
 
@@ -53,8 +55,8 @@ class App extends React.Component {
                 <div>
                     <Router>
 
-                        <Route path="/" exact render={() => <Home />} />
-                        <Route path="/appointment" exact render={() => <Appointment />} />
+                        <Route path="/" exact render={() => <Home user_details={this.state.user_details}/>} />
+                        <Route path="/appointment" exact render={() => <Appointment user_details={this.state.user_details} />} />
                         <Route path="/logout" exact render={() => <Logout />} />
 
                     </Router>

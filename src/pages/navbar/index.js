@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
-import "./index.css"
 
 
 export default class NavBar extends Component {
@@ -16,38 +15,34 @@ export default class NavBar extends Component {
 
     return (
 
-      <Menu secondary>
+      <div className="Nav">
+        <Menu secondary className="menu">
 
-        <Menu.Item
-          as={NavLink} exact to="/"
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        />
-
-        <Menu.Item
-          as={NavLink} exact to="/appointment"
-          name='Book Appointment'
-          active={activeItem === 'appointment'}
-          onClick={this.handleItemClick}
-        />
-
-        <Menu.Menu position='right'>
           <Menu.Item
-            as={NavLink} exact to="/logout"
-            name='logout'
-            active={activeItem === 'logout'}
+            as={NavLink} exact to="/"
+            name='home'
+            active={activeItem === 'home'}
+            onClick={this.handleItemClick}
           />
-        </Menu.Menu>
 
-      </Menu>
+          <Menu.Item
+            as={NavLink} exact to="/appointment"
+            name='Book Appointment'
+            active={activeItem === 'appointment'}
+            onClick={this.handleItemClick}
+          />
+
+          <Menu.Menu position='right'>
+            <Menu.Item
+              as={NavLink} exact to="/logout"
+              name='logout'
+              active={activeItem === 'logout'}
+            />
+          </Menu.Menu>
+
+        </Menu>
+      </div>
     )
   }
 }
 
-
-// CSS from Semantic UI React
-const styleLink = document.createElement("link");
-styleLink.rel = "stylesheet";
-styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
-document.head.appendChild(styleLink);
