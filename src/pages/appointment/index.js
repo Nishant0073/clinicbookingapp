@@ -3,10 +3,10 @@ import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import NavBar from "../navbar";
 import './index.css';
 
-import DatePicker from 'react-datepicker'
-import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import { apiBook } from "../../urls";
 
-const options = [
+const hospitalOptions = [
     { key: 'd', text: 'DLF Hospital', value: 'dlf' },
     { key: 'a', text: 'AIIMS Indrapraastha', value: 'aiims' },
     { key: 'f', text: 'Fortis Hospital', value: 'fortis' },
@@ -43,29 +43,67 @@ class Appointment extends React.Component {
         this.handleDateChange = this.handleDateChange.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
     }
-    handleClick() {
 
+    book = () => {
+        axios.post(`${apiBook()}`,
+            {
+                username: this.props.user_details.username,
+                ailment: this.state.ailment,
+                hospital: this.state.hospital,
+                date: this.state.date,
+                time: this.state.time,
+            }
+        ).then(
+            res => {
+                console.log(res)
+                alert("Appointment Booked Successfully")
+            }
+        ).catch(
+            err => {
+                console.log(err)
+                alert("Appointment Could't Be Booked")
+            }
+        )
+    }
+    handleClick() {
+         console.log(
+            "ailment : " + this.state.ailment +
+            "\ndate : " + this.state.date +
+            "\ntime : " + this.state.time +
+            "\nhospital : " + this.state.hospital+
+            "\nusername : " + this.props.user_details.username
+        )
+
+        this.book()
+
+        this.setState({
+            ailment:'',
+            hospital:'',
+            date:'',
+            time:'',
+        })
     }
     handleAilmentChange(event) {
-        this.setState = {
+        this.setState({
             ailment: event.target.value
-        }
+        })
     }
     handleDateChange(event, { value }) {
-        this.setState = {
+        this.setState({
             date: value
-        }
+        })
     }
-    handleTimeChange(event, {value}) {
-        this.setState = {
+    handleTimeChange(event, { value }) {
+        this.setState({
             time: value
-        }
+        })
     }
-    handleHospitalChange(event, { value }) {
-        this.setState = {
+    handleHospitalChange(event, {value}) {
+        this.setState({
             hospital: value
-        }
+        })
     }
+
     render() {
         return (
             <div>
@@ -84,7 +122,7 @@ class Appointment extends React.Component {
                                     <Form.Group widths='equal'>
                                         <Form.Select
                                             fluid
-                                            options={options}
+                                            options={hospitalOptions}
                                             value={this.state.hospital}
                                             placeholder='Choose Hospital'
                                             onChange={this.handleHospitalChange}
@@ -104,11 +142,13 @@ class Appointment extends React.Component {
                                             fluid
                                             options={timeOptions}
                                             value={this.state.time}
-                                            placeholder='Preferable Time Slot'
+                                            placeholder='Time'
                                             onChange={this.handleTimeChange}
                                         />
+
                                     </Form.Group>
-                                    <Button type="reset" color='teal' fluid size='large' onClick={this.handleClick}>
+
+                                    <Button type="reset" color='blue' fluid size='large' onClick={this.handleClick}>
                                         Book your appointment
                                     </Button>
                                     <br />

@@ -25,3 +25,9 @@ export const apiVerify = () => {
 export const apiSignUp = () => {
     return 'http://localhost:8001/register'
 }
+
+// Book
+
+export const apiBook = () => {
+    return 'http://localhost:8001/book'
+}
