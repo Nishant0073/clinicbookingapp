@@ -2,11 +2,30 @@ import React from "react";
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import NavBar from "../navbar";
 import './index.css';
+
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
+
 const options = [
     { key: 'd', text: 'DLF Hospital', value: 'dlf' },
     { key: 'a', text: 'AIIMS Indrapraastha', value: 'aiims' },
     { key: 'f', text: 'Fortis Hospital', value: 'fortis' },
     { key: 'c', text: 'Central Hospital', value: 'central' },
+]
+const dateOptions = [
+    { key: 'tod', text: 'Today', value: 'today' },
+    { key: 'tom', text: 'Tomorrow', value: 'tomorrow' },
+    { key: 'dat', text: 'Day After Tomorrow', value: 'dayAfter' },
+    { key: 'l', text: 'Later', value: 'later' },
+]
+
+const timeOptions = [
+    { key: 't1', text: '10 am to 11 am', value: '10 am to 11 am' },
+    { key: 't2', text: '11 am to 12 noon', value: '11 am to 12 noon' },
+    { key: 't3', text: '12 noon to 1 pm', value: '12 noon to 1 pm' },
+    { key: 't4', text: '4 pm to 5 pm', value: '4 pm to 5 pm' },
+    { key: 't5', text: '5 am to 6 pm', value: '5 pm to 6 pm' },
+    { key: 't6', text: '6 noon to 7 pm', value: '6 pm to 7 pm' },
 ]
 
 class Appointment extends React.Component {
@@ -32,11 +51,15 @@ class Appointment extends React.Component {
             ailment: event.target.value
         }
     }
-    handleDateChange() {
-
+    handleDateChange(event, { value }) {
+        this.setState = {
+            date: value
+        }
     }
-    handleTimeChange() {
-
+    handleTimeChange(event, {value}) {
+        this.setState = {
+            time: value
+        }
     }
     handleHospitalChange(event, { value }) {
         this.setState = {
@@ -63,13 +86,27 @@ class Appointment extends React.Component {
                                             fluid
                                             options={options}
                                             value={this.state.hospital}
-                                            placeholder='Hospital'
+                                            placeholder='Choose Hospital'
                                             onChange={this.handleHospitalChange}
                                         />
                                     </Form.Group>
                                     <Form.Group widths='equal'>
-                                        <input id="date-input" type="date" fluid>
-                                        </input>
+                                        <Form.Select
+                                            fluid
+                                            options={dateOptions}
+                                            value={this.state.date}
+                                            placeholder='Choose Appointment Date'
+                                            onChange={this.handleDateChange}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group widths='equal'>
+                                        <Form.Select
+                                            fluid
+                                            options={timeOptions}
+                                            value={this.state.time}
+                                            placeholder='Preferable Time Slot'
+                                            onChange={this.handleTimeChange}
+                                        />
                                     </Form.Group>
                                     <Button type="reset" color='teal' fluid size='large' onClick={this.handleClick}>
                                         Book your appointment
